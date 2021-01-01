@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES;
 import static androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode;
 
@@ -62,8 +63,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
     public void onItemSelected(AdapterView<?> parent, View view,
                                int pos, long id) {
+if(id == 0) {
+    setDefaultNightMode(MODE_NIGHT_FOLLOW_SYSTEM);
+}
 
-if(id == 1){
+else if(id == 1){
     setDefaultNightMode(MODE_NIGHT_YES);
 
 }else{
