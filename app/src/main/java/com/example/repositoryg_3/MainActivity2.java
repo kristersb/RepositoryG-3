@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -39,8 +40,6 @@ private String text;
                 ShowThings();
                 updateViews();
 
-
-
             }
         });
 
@@ -53,11 +52,14 @@ private String text;
     public void ShowThings(){
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         text = sharedPreferences.getString(TEXT, "");
+        if(text.length()<1){
+            Toast.makeText(this, "Nothing found", Toast.LENGTH_LONG).show();
+        }
+
 
     }
     public void updateViews() {
         textView.setText(text);
-
     }
 
 }

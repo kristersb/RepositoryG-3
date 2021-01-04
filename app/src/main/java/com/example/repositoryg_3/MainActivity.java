@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private Button button2;
     private Button button;
     EditText editSave;
+    String text1;
 
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String TEXT = "text";
@@ -51,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 Activityv2();
             }
         });
-
         button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                SaveThings();
             }
         });
+        LoadThings();
 
     }
     public void onItemSelected(AdapterView<?> parent, View view,
@@ -92,5 +93,10 @@ else if(id == 1){
         editor.putString(TEXT, editSave.getText().toString());
         editor.apply();
         
+    }
+    public void LoadThings(){
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        text1 = sharedPreferences.getString(TEXT, "");
+        editSave.setText(text1);
     }
 }
